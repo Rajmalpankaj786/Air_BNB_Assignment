@@ -1,0 +1,27 @@
+package com.airBnb.Entity;
+
+import java.util.List;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
+import lombok.Data;
+
+@Entity
+@Data
+public class Host {
+	@Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+    private String name;
+    private boolean active;
+    private String location;
+    private String propertyType;
+    private String about;
+    private String hostingSince;
+
+    @OneToMany(mappedBy = "host")
+    private List<Property> properties;
+}
